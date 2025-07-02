@@ -16,6 +16,4 @@ iptables -L FILTERS --line-number | grep -v ESTABLISHED | awk '{print $1}' | tai
 
 # Print a message indicating that the firewall is being restarted by running selim.sh
 echo "${GREEN}Restarting the firewall...${NC}"
-# Execute selim.sh with debug mode (-x) to reapply firewall rules
-# selim.sh is assumed to configure the necessary rules, similar to firewall-docker.sh
 sh -x ./firewallDockerSupported.sh
