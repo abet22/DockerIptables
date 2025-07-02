@@ -34,18 +34,8 @@ This guide explains how to set up your environment to use the `DockerIptables` s
      ```bash
      ip a
      ```
-   - Update the interface in `examples/example-rules.conf` or directly in the scripts if needed (see [Usage Guide](usage.md)).
 
-4. **Optional: Configure Custom Rules**:
-   - Edit `examples/example-rules.conf` to specify allowed IPs and ports for services like SSH or HTTPS.
-   - Example configuration:
-     ```bash
-     MAIN_INTERFACE=eth0
-     SSH_ALLOWED_IP=192.168.1.100
-     HTTPS_ALLOWED_IP=192.168.1.101
-     ```
-
-5. **Test the Environment**:
+4. **Test the Environment**:
    - Ensure Docker is running: `sudo systemctl start docker`
    - Verify iptables is functional: `sudo iptables -L`
    - If using a custom interface, test connectivity: `ping 8.8.8.8`
