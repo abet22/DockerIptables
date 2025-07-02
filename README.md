@@ -7,7 +7,6 @@ A straightforward solution to manage iptables firewall rules in Docker environme
 - Supports custom rules for services like SSH, HTTPS, or other network services.
 - Provides scripts to set up, restart, clean specific rules, and reset all firewall configurations.
 - Includes an example script with configurable network interface and rules.
-- Uses Unix-style (LF) line endings for compatibility with Linux/Docker environments.
 
 ## Quick Start
 1. **Clone the Repository**:
@@ -37,10 +36,8 @@ A straightforward solution to manage iptables firewall rules in Docker environme
 - [Example Configurations](examples/example-rules.conf): Template for custom rules.
 
 ## Notes
-- Ensure your network interface matches the one specified in the scripts (default: `ens32`). Check with `ip a`.
+- Ensure your network interface matches the one specified in the scripts.
 - Run scripts with `sudo` to avoid permission errors.
-- The repository uses LF line endings (enforced by `.gitattributes`) for Linux/Docker compatibility.
-- Save iptables rules before resetting: `sudo iptables-save > backup-rules-$(date +%F).conf`.
 
 ## License
-Licensed under the MIT License. See [LICENSE](LICENSE) for details.
+Licensed under the Apache 2.0 License. See [LICENSE](LICENSE) for details.
