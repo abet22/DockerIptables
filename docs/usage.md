@@ -23,15 +23,13 @@ sudo bash firewallDockerSupported.sh
 - **What it does**: Creates `DOCKER-USER` and `FILTERS` chains, sets default policies (`FORWARD DROP`, `INPUT ACCEPT`, `OUTPUT ACCEPT`), allows loopback and ICMP traffic, and provides a template for custom rules.
 - **Customization**:
   - Add specific rules (e.g., for SSH or HTTPS) in the `SPECIFIC RULES` section of the script.
-  - Alternatively, use `examples/firewallDockerSupportedExample.sh` as a reference, which includes sample rules for SSH (port 22) and HTTPS (port 443).
-  - Optional: Create `examples/example-rules.conf` to define variables like `MAIN_INTERFACE`, `SSH_ALLOWED_IP`, and `HTTPS_ALLOWED_IP`, then source it in the script:
-    ```bash
-    source ../examples/example-rules.conf
-    ```
-- **Example**:
+  - You can add sample rules for SSH (port 22) and HTTPS (port 443) directly in the `SPECIFIC RULES` section of the script.
+  - Define variables like `MAIN_INTERFACE`, `SSH_ALLOWED_IP`, and `HTTPS_ALLOWED_IP` at the top of your script if needed, and source your own configuration file if you wish.
+**Example**:
   ```bash
   # In firewallDockerSupported.sh
-  source ../examples/example-rules.conf
+  # Optionally source your own config file
+  # source ./my-firewall-config.conf
   $IPTABLES -A DOCKER-USER -i $MAIN_INTERFACE -j FILTERS
   $IPTABLES -A FILTERS -m conntrack --ctorigsrc $SSH_ALLOWED_IP --ctorigdstport 22 -j ACCEPT
   $IPTABLES -A FILTERS -m conntrack --ctorigsrc $HTTPS_ALLOWED_IP --ctorigdstport 443 -j ACCEPT
@@ -72,7 +70,7 @@ sudo iptables-save
 ```
 
 ## Notes
-- **Network Interface**: Ensure the network interface (e.g., `ens32`) matches your system. Check with `ip a` and update `firewallDockerSupported.sh` or `example-rules.conf`.
+**Network Interface**: Ensure the network interface (e.g., `ens32`) matches your system. Check with `ip a` and update `firewallDockerSupported.sh` as needed.
 - **Logging Chains**: The `LOGDROPG`, `LOGACCEPTG`, and `NOLOGDROPG` chains are used for logging. These are not created by the provided scripts; ensure they exist or remove references in `clearRules.sh` if not needed.
 - **Docker Compatibility**: The scripts use the `DOCKER-USER` chain to ensure Docker respects your firewall rules. Avoid modifying Docker's default chains directly.
 - **Backups**: Before running `clearAll.sh`, save your current rules:
