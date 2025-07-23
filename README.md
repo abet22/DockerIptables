@@ -19,8 +19,7 @@ A straightforward solution to manage iptables firewall rules in Docker environme
    chmod +x scripts/*.sh
    ```
 3. **Configure Rules**:
-   - Edit `examples/example-rules.conf` to set your network interface and allowed IPs (see [Usage Guide](docs/usage.md)).
-   - Alternatively, use `examples/firewallDockerSupportedExample.sh` as a template.
+   - See the [Usage Guide](docs/usage.md) for instructions on setting your network interface and allowed IPs.
 4. **Run the Main Script**:
    ```bash
    sudo bash scripts/firewallDockerSupported.sh
@@ -33,7 +32,7 @@ A straightforward solution to manage iptables firewall rules in Docker environme
 ## Documentation
 - [Installation Guide](docs/installation.md): How to set up dependencies and prepare your environment.
 - [Usage Guide](docs/usage.md): Detailed instructions for using each script.
-- [Example Configurations](examples/example-rules.conf): Template for custom rules.
+  
 
 ## Notes
 - Ensure your network interface matches the one specified in the scripts.
